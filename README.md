@@ -1,6 +1,6 @@
 # Ninthlink Web app generator
 
-> [Yeoman](http://yeoman.io) generator that scaffolds out a front-end web app using [gulp](http://gulpjs.com/) for the build process
+> [Yeoman](http://yeoman.io) generator that scaffolds out a front-end web app using [gulp](http://gulpjs.com/) for the build process. A modified version of [this generator](https://github.com/yeoman/generator-webapp).
 
 <!-- ![](screenshot.png) -->
 
@@ -9,7 +9,7 @@
 
 Please see our [gulpfile](app/templates/gulpfile.babel.js) for up to date information on what we support.
 
-* uncss
+* UnCSS
 * CSS Autoprefixing
 * Built-in preview server with BrowserSync
 * Automagically compile Sass with [libsass](http://libsass.org)
