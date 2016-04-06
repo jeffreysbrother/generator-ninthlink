@@ -1,10 +1,10 @@
 {
-  "name": "generator-webapp",
-  "version": "2.0.0",
-  "description": "Scaffold out a front-end web app",
+  "name": "generator-ninthlink",
+  "version": "1.0.0",
+  "description": "an updated version of generator-webapp for Ninthlink",
   "license": "BSD-2-Clause",
   "repository": "yeoman/generator-webapp",
-  "author": "The Yeoman Team",
+  "author": "The Yeoman Team and James Cool",
   "main": "app/index.js",
   "engines": {
     "node": ">=0.10.0",
@@ -17,6 +17,8 @@
     "app"
   ],
   "keywords": [
+    "ninthlink",
+    "uncss",
     "yeoman-generator",
     "web",
     "app",
