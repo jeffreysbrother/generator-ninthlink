@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "an updated version of generator-webapp for Ninthlink",
   "license": "BSD-2-Clause",
-  "repository": "yeoman/generator-webapp",
+  "repository": "jeffreysbrother/generator-ninthlink",
   "author": "The Yeoman Team and James Cool",
   "main": "app/index.js",
   "engines": {
