@@ -75,7 +75,26 @@ gulp.task('html', ['styles'], () => {
     .pipe($.if('*.js', $.uglify()))
     <% if (includeUncss) { -%>
     .pipe($.if('*.css', $.uncss({
-            html: ['app/index.html']
+            html: ['app/index.html'],
+            ignore: [/\w\.in/,
+                    '.fade',
+                    '.collapse',
+                    '.collapsing',
+                    /(#|\.)navbar(\-[a-zA-Z]+)?/,
+                    /(#|\.)dropdown(\-[a-zA-Z]+)?/,
+                    /(#|\.)(open)/,
+                    '.modal',
+                    '.modal.fade.in',
+                    '.modal-dialog',
+                    '.modal-document',
+                    '.modal-scrollbar-measure',
+                    '.modal-backdrop.fade',
+                    '.modal-backdrop.in',
+                    '.modal.fade.modal-dialog',
+                    '.modal.in.modal-dialog',
+                    '.modal-open',
+                    '.in',
+                    '.modal-backdrop']
         })))
     <% } -%>
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
