@@ -108,7 +108,7 @@ module.exports = generators.Base.extend({
       this.includeBootstrap = hasFeature('includeBootstrap');
       this.includeModernizr = hasFeature('includeModernizr');
       this.includeUncss = hasFeature('includeUncss');
-      this.includeUncss = hasFeature('includeTagManager');
+      this.includeTagManager = hasFeature('includeTagManager');
       this.includeJQuery = answers.includeJQuery;
 
       done();
