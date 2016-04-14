@@ -80,6 +80,10 @@ module.exports = generators.Base.extend({
         name: 'uncss',
         value: 'includeUncss',
         checked: true
+      }, {
+        name: 'include Google Tag Mangaer instead of Google Analytics',
+        value: 'includeTagManager',
+        checked: false
       }]
     }, {
       type: 'confirm',
@@ -104,6 +108,7 @@ module.exports = generators.Base.extend({
       this.includeBootstrap = hasFeature('includeBootstrap');
       this.includeModernizr = hasFeature('includeModernizr');
       this.includeUncss = hasFeature('includeUncss');
+      this.includeUncss = hasFeature('includeTagManager');
       this.includeJQuery = answers.includeJQuery;
 
       done();
@@ -274,6 +279,7 @@ module.exports = generators.Base.extend({
           includeSass: this.includeSass,
           includeBootstrap: this.includeBootstrap,
           includeModernizr: this.includeModernizr,
+          includeModernizr: this.includeTagManager,
           includeJQuery: this.includeJQuery,
           bsPath: bsPath,
           bsPlugins: [
