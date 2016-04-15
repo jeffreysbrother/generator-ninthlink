@@ -151,6 +151,13 @@ module.exports = generators.Base.extend({
         this.destinationPath('.babelrc')
       );
     },
+    
+    htaccess: function () {
+      this.fs.copy(
+        this.templatePath('htaccess'),
+        this.destinationPath('.htaccess')
+      );
+    },
 
     git: function () {
       this.fs.copy(
