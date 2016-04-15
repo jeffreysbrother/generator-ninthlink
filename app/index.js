@@ -81,7 +81,7 @@ module.exports = generators.Base.extend({
         value: 'includeUncss',
         checked: true
       }, {
-        name: 'include Google Tag Mangaer instead of Google Analytics',
+        name: 'replace Google Analytics with Google Tag Manager?',
         value: 'includeTagManager',
         checked: false
       }]
@@ -155,7 +155,7 @@ module.exports = generators.Base.extend({
     htaccess: function () {
       this.fs.copy(
         this.templatePath('htaccess'),
-        this.destinationPath('.htaccess')
+        this.destinationPath('app/.htaccess')
       );
     },
 
