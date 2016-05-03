@@ -98,7 +98,7 @@ gulp.task('html', ['styles'], () => {
         })))
     <% } -%>
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false, discardComments: {removeAll: true}})))
-    .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
+    .pipe($.if('*.html', $.htmlmin({collapseBooleanAttributes: true, collapseWhitespace: true, removeComments: true})))
     .pipe(gulp.dest('dist'));
 });
 
