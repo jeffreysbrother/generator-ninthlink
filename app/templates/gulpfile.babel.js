@@ -8,6 +8,8 @@ import {stream as wiredep} from 'wiredep';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
+let customPort = 9000;
+
 gulp.task('styles', () => {<% if (includeSass) { %>
   return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
@@ -83,6 +85,7 @@ gulp.task('html', ['styles'], () => {
                     /(#|\.)navbar(\-[a-zA-Z]+)?/,
                     /(#|\.)dropdown(\-[a-zA-Z]+)?/,
                     /(#|\.)(open)/,
+                    /(#|\.)carousel(\-[a-zA-Z]+)?/,
                     '.modal',
                     '.modal.fade.in',
                     '.modal-dialog',
@@ -139,7 +142,7 @@ gulp.task('serve', ['styles', 'fonts'], () => {
 <% } -%>
   browserSync({
     notify: false,
-    port: 9000,
+    port: customPort,
     server: {
       baseDir: ['.tmp', 'app'],
       routes: {
@@ -168,7 +171,7 @@ gulp.task('serve', ['styles', 'fonts'], () => {
 gulp.task('serve:dist', () => {
   browserSync({
     notify: false,
-    port: 9000,
+    port: customPort,
     server: {
       baseDir: ['dist']
     }
@@ -182,7 +185,7 @@ gulp.task('serve:test', () => {
 <% } -%>
   browserSync({
     notify: false,
-    port: 9000,
+    port: customPort,
     ui: false,
     server: {
       baseDir: 'test',
