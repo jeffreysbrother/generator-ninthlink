@@ -9,8 +9,9 @@
 
 Please see the [gulpfile](app/templates/gulpfile.babel.js) for up-to-date information on what we support.
 
+* Bootstrap, Sass, and HTML5 Boilerplate (jQuery, Normalize.css, etc.)
 * UnCSS (customized for use with Bootstrap)
-* The ability to choose between Google Tag Manager and Google Analytics
+* Choose between Google Tag Manager and Google Analytics
 * CSS Autoprefixing
 * Built-in preview server with BrowserSync
 * Compile Sass with [libsass](http://libsass.org)
