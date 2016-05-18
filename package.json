@@ -1,13 +1,13 @@
 {
   "name": "generator-ninthlink",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "an updated version of generator-webapp which includes gulp-uncss",
   "license": "BSD-2-Clause",
   "repository": "jeffreysbrother/generator-ninthlink",
   "author": "The Yeoman Team and James Cool",
   "main": "app/index.js",
   "engines": {
-    "node": ">=0.10.0",
+    "node": ">=4",
     "npm": ">=1.3"
   },
   "scripts": {
