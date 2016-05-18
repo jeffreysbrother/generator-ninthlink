@@ -7,17 +7,19 @@
 
 ## Features
 
-Please see our [gulpfile](app/templates/gulpfile.babel.js) for up to date information on what we support.
+Please see the [gulpfile](app/templates/gulpfile.babel.js) for up-to-date information on what we support.
 
-* UnCSS
+* UnCSS (customized for use with Bootstrap)
+* The ability to choose between Google Tag Manager and Google Analytics
 * CSS Autoprefixing
 * Built-in preview server with BrowserSync
-* Automagically compile Sass with [libsass](http://libsass.org)
-* Automagically lint your scripts
-* Map compiled CSS to source stylesheets with source maps
-* Awesome image optimization
-* Automagically wire-up dependencies installed with [Bower](http://bower.io)
+* Compile Sass with [libsass](http://libsass.org)
+* Lint your scripts
+* Source maps
+* Image optimization
+* Wire-up dependencies installed with [Bower](http://bower.io)
 * The gulpfile makes use of [ES2015 features](https://babeljs.io/docs/learn-es2015/) by using [Babel](https://babeljs.io)
+* Many other customizations...
 
 *For more information on what this generator can do for you, take a look at the [gulp plugins](app/templates/_package.json) used in our `package.json`.*
 
