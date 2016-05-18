@@ -1,6 +1,6 @@
 {
   "name": "generator-ninthlink",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "an updated version of generator-webapp which includes gulp-uncss",
   "license": "BSD-2-Clause",
   "repository": "jeffreysbrother/generator-ninthlink",

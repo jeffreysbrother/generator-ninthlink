@@ -2,16 +2,15 @@
 
 > [Yeoman](http://yeoman.io) generator that scaffolds out a front-end web app using [gulp](http://gulpjs.com/) for the build process. A modified version of [this generator](https://github.com/yeoman/generator-webapp).
 
-<!-- ![](screenshot.png) -->
-
 
 ## Features
 
-Please see the [gulpfile](app/templates/gulpfile.babel.js) for up-to-date information on what we support.
+Please see the [gulpfile](app/templates/gulpfile.js) for up-to-date information on what we support.
 
 * Bootstrap, Sass, and HTML5 Boilerplate (jQuery, Normalize.css, etc.)
 * UnCSS (customized for use with Bootstrap)
 * Choose between Google Tag Manager and Google Analytics
+* Minification
 * CSS Autoprefixing
 * Built-in preview server with BrowserSync
 * Compile Sass with [libsass](http://libsass.org)
@@ -34,13 +33,14 @@ If your favorite feature is missing and you really need Ruby Sass, you can alway
 
 ## Getting Started
 
-- Install dependencies: `npm install --global yo gulp-cli bower`
+- Install [Node](https://nodejs.org/en/)
+- Install other dependencies: `npm install --global yo gulp-cli bower`
 - Install the generator: `npm install --global generator-ninthlink`
-- Run `yo ninthlink` to scaffold your webapp
+- Run `yo ninthlink` to scaffold your web app
 - Run `gulp serve` to preview and watch for changes
-- Run `bower install --save <package>` to install frontend dependencies
+- Run `bower install --save <package>` to install front-end dependencies
 - Run `gulp serve:test` to run the tests in the browser
-- Run `gulp` to build your webapp for production
+- Run `gulp` to build your web app for production
 - Run `gulp serve:dist` to preview the production build
 
 
