@@ -8,7 +8,7 @@ const wiredep = require('wiredep').strem;
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
-let customPort = 9000;
+var customPort = 9000;
 
 gulp.task('styles', () => {<% if (includeSass) { %>
   return gulp.src('app/styles/*.scss')
