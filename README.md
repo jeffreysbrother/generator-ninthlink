@@ -43,7 +43,11 @@ If your favorite feature is missing and you really need Ruby Sass, you can alway
 - Run `gulp serve:test` to run the tests in the browser
 - Run `gulp` to build your web app for production
 - Run `gulp serve:dist` to preview the production build
-- Run `gulp bootlint` to lint Bootstrap markup
+
+
+## Additional Tasks
+
+- Run `gulp bootlint` to lint Bootstrap markup. This is currently a standalone task and will only lint the app/ directory.
 
 
 ## Docs

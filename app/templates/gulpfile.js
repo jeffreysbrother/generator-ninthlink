@@ -226,7 +226,17 @@ gulp.task('wiredep', () => {<% if (includeSass) { %>
 
 gulp.task('bootlint', function() {
     return gulp.src('app/index.html')
-        .pipe($.bootlint());
+        .pipe($.bootlint({
+            reportFn: function(file, lint, isError, isWarning, errorLocation) {
+                var message = (isError) ? "ERROR! - " : "WARN! - ";
+                if (errorLocation) {
+                    message += ' (line:' + (errorLocation.line + 1) + ', col:' + (errorLocation.column + 1) + ') [' + lint.id + '] ' + lint.message;
+                } else {
+                    message += ': ' + lint.id + ' ' + lint.message;
+                }
+                console.log(message);
+            }
+        }));
 });
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
