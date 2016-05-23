@@ -3,7 +3,7 @@ const gulp = require('gulp');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync');
 const del = require('del');
-const wiredep = require('wiredep').strem;
+const wiredep = require('wiredep').stream;
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -222,6 +222,11 @@ gulp.task('wiredep', () => {<% if (includeSass) { %>
       ignorePath: /^(\.\.\/)*\.\./
     }))
     .pipe(gulp.dest('app'));
+});
+
+gulp.task('bootlint', function() {
+    return gulp.src('app/index.html')
+        .pipe($.bootlint());
 });
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
