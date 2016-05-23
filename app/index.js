@@ -59,40 +59,40 @@ module.exports = generators.Base.extend({
 
 
     if (!this.options['skip-welcome-message']) {
-      
+
       // this will override the default greeting ASCII art
-      this.log(yosay.defaultGreeting =
-      '\n                      '+chalk.yellow('9') +
-      '\n                  '+chalk.yellow('9')+'       '+chalk.yellow('9') +
-      '\n              '+chalk.yellow('9')+'       L       '+chalk.yellow('9') +
-      '\n          '+chalk.yellow('9')+'       L       L       '+chalk.yellow('9') +
-      '\n      '+chalk.yellow('9')+'       L       L       L       '+chalk.yellow('9') +
-      '\n      '+chalk.yellow('9   9')+'       L       L       '+chalk.yellow('9')+chalk.red('///9') +
-      '\n      '+chalk.yellow('9   l   9')+'       L       '+chalk.yellow('9')+chalk.red('///////9') +
-      '\n      '+chalk.yellow('9   l   l   9')+'       '+chalk.yellow('9')+chalk.red('.//////////9') +
-      '\n      '+chalk.yellow('9   l   l   l   9')+'          '+chalk.red('.9///9') +
-      '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('.')+'             '+chalk.red('.9') +
-      '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('///9.') +
-      '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('///////9.') +
-      '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('///////////9.') +
-      '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('///////////////')+chalk.yellow('9') +
-      '\n          '+chalk.yellow('9   l   l   9')+chalk.red('///////////')+chalk.yellow('9   9') +
-      '\n              '+chalk.yellow('9   l   9')+chalk.red('///////')+chalk.yellow('9   l   9') +
-      '\n                  '+chalk.yellow('9   9')+chalk.red('///')+chalk.yellow('9   l   l   9') +
-      '\n                      '+chalk.yellow('9   l   l   l   9') +
-      '\n                      '+chalk.yellow('9   l   l   l   9') +
-      '\n                      '+chalk.yellow('9   l   l   l   9') +
-      '\n                      '+chalk.yellow('9   l   l   l   9') +
-      '\n                      '+chalk.yellow('9   l   l   l   9') +
-      '\n                      '+chalk.yellow('9   l   l   9') +
-      '\n                      '+chalk.yellow('9   l   9') +
-      '\n                      '+chalk.yellow('9   9') +
-      '\n                      '+chalk.yellow('9') +
-      '\n   ' +
-      '\n   ');
-      
+      // this.log(yosay.defaultGreeting =
+      // '\n                      '+chalk.yellow('9') +
+      // '\n                  '+chalk.yellow('9')+'       '+chalk.yellow('9') +
+      // '\n              '+chalk.yellow('9')+'       L       '+chalk.yellow('9') +
+      // '\n          '+chalk.yellow('9')+'       L       L       '+chalk.yellow('9') +
+      // '\n      '+chalk.yellow('9')+'       L       L       L       '+chalk.yellow('9') +
+      // '\n      '+chalk.yellow('9   9')+'       L       L       '+chalk.yellow('9')+chalk.red('///9') +
+      // '\n      '+chalk.yellow('9   l   9')+'       L       '+chalk.yellow('9')+chalk.red('///////9') +
+      // '\n      '+chalk.yellow('9   l   l   9')+'       '+chalk.yellow('9')+chalk.red('.//////////9') +
+      // '\n      '+chalk.yellow('9   l   l   l   9')+'          '+chalk.red('.9///9') +
+      // '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('.')+'             '+chalk.red('.9') +
+      // '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('///9.') +
+      // '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('///////9.') +
+      // '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('///////////9.') +
+      // '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('///////////////')+chalk.yellow('9') +
+      // '\n          '+chalk.yellow('9   l   l   9')+chalk.red('///////////')+chalk.yellow('9   9') +
+      // '\n              '+chalk.yellow('9   l   9')+chalk.red('///////')+chalk.yellow('9   l   9') +
+      // '\n                  '+chalk.yellow('9   9')+chalk.red('///')+chalk.yellow('9   l   l   9') +
+      // '\n                      '+chalk.yellow('9   l   l   l   9') +
+      // '\n                      '+chalk.yellow('9   l   l   l   9') +
+      // '\n                      '+chalk.yellow('9   l   l   l   9') +
+      // '\n                      '+chalk.yellow('9   l   l   l   9') +
+      // '\n                      '+chalk.yellow('9   l   l   l   9') +
+      // '\n                      '+chalk.yellow('9   l   l   9') +
+      // '\n                      '+chalk.yellow('9   l   9') +
+      // '\n                      '+chalk.yellow('9   9') +
+      // '\n                      '+chalk.yellow('9') +
+      // '\n   ' +
+      // '\n   ');
+
       // commented out becasue this dumps the message AND the default ASCII ART
-      // this.log(yosay('Yo Ninthlink! Out of the box I include HTML5 Boilerplate, jQuery, UnCSS, and many more useful tools.'));
+      this.log(yosay('Yo Ninthlink! Out of the box I include HTML5 Boilerplate, jQuery, UnCSS, and many more useful tools.'));
     }
 
     var prompts = [{
@@ -186,7 +186,7 @@ module.exports = generators.Base.extend({
         this.destinationPath('.babelrc')
       );
     },
-    
+
     htaccess: function () {
       this.fs.copy(
         this.templatePath('htaccess'),
