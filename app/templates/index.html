@@ -27,55 +27,23 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <% if (includeBootstrap) { %>
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted"><%= appname %></h3>
-      </div>
 
-      <div class="jumbotron">
-        <h1>Ninthlink</h1>
-        <p class="lead">Always a pleasure scaffolding your apps.</p>
-        <p><a class="btn btn-lg btn-success" href="#">UNCSS</a></p>
-      </div>
-
-      <div class="row marketing">
-        <div class="col-lg-12">
-          <h4>HTML5 Boilerplate</h4>
-          <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-          <% if (includeSass) { %>
-          <h4>Sass</h4>
-          <p>Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.</p>
-          <% } %>
-          <h4>Bootstrap</h4>
-          <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p><% if (includeModernizr) { %>
-          <h4>Modernizr</h4>
-          <p>Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.</p>
-          <% } %>
-        </div>
-      </div>
-
-      <div class="footer">
-        <p>♥ from the Yeoman team (and James)</p>
-      </div>
-    </div>
-    <% } else { %>
-    <div class="hero-unit">
-      <h1>'Allo, 'Allo!</h1>
-      <p>You now have</p>
+      <div class="container">
+      <h1>Yo Ninthlink!</h1>
+      
+      <p>
+        This generator is a fork of <a href="https://github.com/yeoman/generator-webapp">generator-webapp</a>. Here's a list of some of the more significant additions and modificaitons:
+      </p>
+      
       <ul>
-        <li>HTML5 Boilerplate</li><% if (includeSass) { %>
-        <li>Sass</li><% } if (includeModernizr) { %>
-        <li>Modernizr</li><% } if (includeJQuery) { %>
-        <li>jQuery</li><% } %>
+        <li><a href="https://www.npmjs.com/package/gulp-uncss">UnCSS</a> (with custom configuration to eliminate conflicts with Bootstrap)</li>
+        <li>the ability to add either Google Tag Manager or Google Analytics</li>
+        <li><a href="https://www.npmjs.com/package/gulp-bootlint">Bootstrap linting</a></li>
+        <li>the addition of a pre-configured .htaccess file; this enables gzip compression and caching.</li>
       </ul>
+      
     </div>
-    <% } %>
+    
 
     <% if (includeTagManager) { %>
       <!-- Google Tag Manager: change GTM-XXXXXX to be your site's ID. -->

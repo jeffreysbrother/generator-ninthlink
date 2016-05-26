@@ -279,6 +279,24 @@ module.exports = generators.Base.extend({
 
       if (this.includeSass) {
         css += '.scss';
+        var header_partial = '_header.scss';
+        var footer_partial = '_footer.scss';
+        var variables_partial = '_variables.scss';
+        var components_partial = '_components.scss';
+        
+        this.fs.copy(
+          this.templatePath(header_partial),
+          this.destinationPath('app/styles/' + header_partial));
+        this.fs.copy(
+          this.templatePath(footer_partial),
+          this.destinationPath('app/styles/' + footer_partial));
+        this.fs.copy(
+          this.templatePath(variables_partial),
+          this.destinationPath('app/styles/' + variables_partial));
+        this.fs.copy(
+          this.templatePath(components_partial),
+          this.destinationPath('app/styles/' + components_partial));
+          
       } else {
         css += '.css';
       }
@@ -290,7 +308,9 @@ module.exports = generators.Base.extend({
           includeBootstrap: this.includeBootstrap
         }
       );
+      
     },
+    
 
     scripts: function () {
       this.fs.copy(
