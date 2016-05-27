@@ -15,7 +15,7 @@ Please see the [gulpfile](app/templates/gulpfile.js) for up-to-date information 
 * Built-in preview server with BrowserSync
 * Compile Sass with [libsass](http://libsass.org)
 * Lint your scripts
-* Lint Bootstrap HTML with gulp-bootlint
+* Lint Bootstrap HTML with gulp-bootlint 
 * Source maps
 * Image optimization
 * Wire-up dependencies installed with [Bower](http://bower.io)
