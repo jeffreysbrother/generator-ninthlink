@@ -1,0 +1,23 @@
+
+// equal height columns
+.row-xs-flex {
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+}
+@media (min-width: 768px) {
+  .row-sm-flex {
+    display: flex;
+  }
+}
+@media (min-width: 992px) {
+  .row-md-flex {
+    display: flex;
+  }
+}
+@media (min-width: 1200px) {
+  .row-lg-flex {
+    display: flex;
+  }
+}

@@ -3,6 +3,12 @@
 // bower:scss
 // endbower
 
+@import 'variables';
+@import 'utilities';
+@import 'components';
+@import 'header';
+@import 'footer';
+
 $orange: #FB8C00;
 $pinkish: #F40051;
 
@@ -43,6 +49,12 @@ li a {
 
 <% } else { %>// bower:scss
 // endbower
+
+@import 'variables';
+@import 'utilities';
+@import 'components';
+@import 'header';
+@import 'footer';
 
 $orange: #FB8C00;
 $pinkish: #F40051;

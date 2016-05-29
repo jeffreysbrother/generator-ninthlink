@@ -283,6 +283,7 @@ module.exports = generators.Base.extend({
         var footer_partial = '_footer.scss';
         var variables_partial = '_variables.scss';
         var components_partial = '_components.scss';
+        var utilities_partial = '_utilities.scss';
         
         this.fs.copy(
           this.templatePath(header_partial),
@@ -296,6 +297,9 @@ module.exports = generators.Base.extend({
         this.fs.copy(
           this.templatePath(components_partial),
           this.destinationPath('app/styles/' + components_partial));
+        this.fs.copy(
+          this.templatePath(utilities_partial),
+          this.destinationPath('app/styles/' + utilities_partial));
           
       } else {
         css += '.css';
