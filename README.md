@@ -17,6 +17,7 @@ Please see the [gulpfile](app/templates/gulpfile.js) for up-to-date information 
 * Lint Bootstrap HTML with gulp-bootlint 
 * Source maps
 * Image optimization
+* Git initialization
 * Choose between Google Tag Manager and Google Analytics
 * Wire-up dependencies installed with [Bower](http://bower.io)
 * The gulpfile makes use of [ES2015 features](https://babeljs.io/docs/learn-es2015/) by using [Babel](https://babeljs.io)

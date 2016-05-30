@@ -369,6 +369,11 @@ module.exports = generators.Base.extend({
     misc: function () {
       mkdirp('app/images');
       mkdirp('app/fonts');
+      
+      // initialize Git repo prior to installing dependencies,
+      // so it still works if the user skips dependency installation
+      this.spawnCommandSync('git', ['init']);
+      
     }
   },
 
@@ -413,11 +418,5 @@ module.exports = generators.Base.extend({
       });
     }
     
-    // initialize Git repo, add, commit
-    this.spawnCommandSync('git', ['init']);
-    
-    // add next two lines if you wish to "add" and "commit" generated files
-    // this.spawnCommandSync('git', ['add', '--all']);
-    // this.spawnCommandSync('git', ['commit', '-m', '"initial commit from generator"']);
   }
 });
