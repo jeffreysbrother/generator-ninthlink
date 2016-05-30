@@ -9,8 +9,7 @@ Please see the [gulpfile](app/templates/gulpfile.js) for up-to-date information 
 
 * Bootstrap, Sass, and HTML5 Boilerplate (jQuery, Normalize.css, etc.)
 * UnCSS (customized for use with Bootstrap)
-* Choose between Google Tag Manager and Google Analytics
-* JS and CSS Minification
+* JS, CSS, and HTML Minification
 * CSS Autoprefixing
 * Built-in preview server with BrowserSync
 * Compile Sass with [libsass](http://libsass.org)
@@ -18,6 +17,7 @@ Please see the [gulpfile](app/templates/gulpfile.js) for up-to-date information 
 * Lint Bootstrap HTML with gulp-bootlint 
 * Source maps
 * Image optimization
+* Choose between Google Tag Manager and Google Analytics
 * Wire-up dependencies installed with [Bower](http://bower.io)
 * The gulpfile makes use of [ES2015 features](https://babeljs.io/docs/learn-es2015/) by using [Babel](https://babeljs.io)
 * Many other customizations...
