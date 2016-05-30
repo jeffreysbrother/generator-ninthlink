@@ -412,5 +412,12 @@ module.exports = generators.Base.extend({
         src: 'app/styles/*.scss'
       });
     }
+    
+    // initialize Git repo, add, commit
+    this.spawnCommandSync('git', ['init']);
+    
+    // add next two lines if you wish to "add" and "commit" generated files
+    // this.spawnCommandSync('git', ['add', '--all']);
+    // this.spawnCommandSync('git', ['commit', '-m', '"initial commit from generator"']);
   }
 });
