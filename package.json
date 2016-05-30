@@ -1,7 +1,7 @@
 {
   "name": "generator-ninthlink",
-  "version": "1.2.2",
-  "description": "an updated version of generator-webapp which includes gulp-uncss",
+  "version": "1.2.3",
+  "description": "generator-webapp + uncss, bootlint, etc.",
   "license": "BSD-2-Clause",
   "repository": "jeffreysbrother/generator-ninthlink",
   "author": "The Yeoman Team and James Cool",
