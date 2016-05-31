@@ -14,7 +14,7 @@ Please see the [gulpfile](app/templates/gulpfile.js) for up-to-date information 
 * Built-in preview server with BrowserSync
 * Compile Sass with [libsass](http://libsass.org)
 * Lint your scripts
-* Lint Bootstrap HTML with gulp-bootlint 
+* Lint Bootstrap HTML with gulp-bootlint
 * Source maps
 * Image optimization
 * Git initialization
@@ -40,7 +40,7 @@ If your favorite feature is missing and you really need Ruby Sass, you can alway
 - Install the generator: `npm install --global generator-ninthlink`
 - Run `yo ninthlink` to scaffold your web app
 - Run `gulp serve` to preview and watch for changes
-- Run `bower install --save <package>` to install front-end dependencies
+<!-- - Run `bower install --save <package>` to install front-end dependencies -->
 - Run `gulp serve:test` to run the tests in the browser
 - Run `gulp` to build your web app for production
 - Run `gulp serve:dist` to preview the production build
@@ -48,7 +48,7 @@ If your favorite feature is missing and you really need Ruby Sass, you can alway
 
 ## Additional Tasks
 
-- Run `gulp bootlint` to lint Bootstrap markup. This is currently a standalone task and will only lint the app/ directory.
+- Run `gulp bootlint` to lint Bootstrap markup. This is currently a standalone task and will only lint the index.html file in the app/ directory. Feel free to customize as necessary.
 
 
 ## Docs
