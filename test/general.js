@@ -28,6 +28,7 @@ describe('general', function () {
       '.bowerrc',
       '.gitignore',
       '.gitattributes',
+      '.htaccess',
       'app/favicon.ico',
       'app/apple-touch-icon.png',
       'app/robots.txt',
