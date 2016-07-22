@@ -72,7 +72,7 @@ gulp.task('html', ['styles', 'scripts'], () => {
 <% } else { -%>
 gulp.task('html', ['styles'], () => {
 <% } -%>
-  return gulp.src('app/*.html')
+  return gulp.src('app/*.html') 
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.js', $.uglify()))
     <% if (includeUncss) { -%>
