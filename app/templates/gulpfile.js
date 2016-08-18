@@ -7,6 +7,7 @@ const wiredep = require('wiredep').stream;
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+const argv = require('yargs').argv;
 
 var customPort = 9000;
 
@@ -239,4 +240,30 @@ gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
 
 gulp.task('default', ['clean'], () => {
   gulp.start('build');
+});
+
+// new cp task
+gulp.task('cp', function() {
+  var destfrom = 'app';
+  var destto = 'dist';
+  if ( argv.from ) {
+    if ( argv.to ) {
+      destto = argv.to;
+    } else {
+      // default is load from ___ to app
+      destto = destfrom;
+    }
+    destfrom = argv.from;
+  } else {
+    if ( argv.to ) {
+      destfrom = destto;
+      destto = argv.to;
+    }
+  }
+  if ( ( destfrom == 'app' ) && ( destto == 'dist' ) ) {
+    console.log('Usage: gulp cp --from someplace --to someplace');
+  } else {
+    console.log('copy from '+ destfrom +' to '+ destto );
+    gulp.src([ destfrom +'/**/*']).pipe(gulp.dest( destto ));
+  }
 });
