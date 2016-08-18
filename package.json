@@ -31,7 +31,8 @@
     "bootstrap",
     "bootlint",
     "BrowserSync",
-    "minification"
+    "minification",
+    "yargs"
   ],
   "dependencies": {
     "chalk": "^1.0.0",
