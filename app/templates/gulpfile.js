@@ -4,12 +4,25 @@ const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync');
 const del = require('del');
 const wiredep = require('wiredep').stream;
+const argv = require('yargs').argv;
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
-const argv = require('yargs').argv;
 
 var customPort = 9000;
+var customDir = '';
+var customAppDir = customDir +'app';
+var customDistDir = customDir +'dist';
+
+if (argv.from) {
+  customDir = argv.from +'/';
+}
+if (argv.appDir) {
+  customAppDir = customDir + argv.appDir;
+}
+if (argv.distDir) {
+  customDistDir = customDir + argv.distDir;
+}
 
 gulp.task('styles', () => {<% if (includeSass) { %>
   return gulp.src('app/styles/*.scss')
