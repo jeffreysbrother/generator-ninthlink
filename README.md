@@ -59,11 +59,11 @@ By default, the generator assumes that all development will take place in app/ .
 
 In order to run Gulp in this new directory, we must include additional flags as follows:
 
-`gulp serve --from=clients/wholefoods --appDir=app/adv/1 --distDir=dist/adv/1`
+`--from=clients/wholefoods --appDir=app/adv/1 --distDir=dist/adv/1`
 
 **or**
 
-`gulp serve --appDir=clients/wholefoods/app/adv/1 --distDir=clients/wholefoods/dist/adv/1`
+`--appDir=clients/wholefoods/app/adv/1 --distDir=clients/wholefoods/dist/adv/1`
 
 This methodology will allow us to import multiple pre-designed starter templates for a number of different clients within *one* repository.
 
