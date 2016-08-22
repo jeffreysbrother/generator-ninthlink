@@ -19,6 +19,7 @@ Please see the [gulpfile](app/templates/gulpfile.js) for up-to-date information 
 * Image optimization
 * Git initialization
 * Choose between Google Tag Manager and Google Analytics
+* Use [yargs](https://www.npmjs.com/package/yargs) to customize the target directory of Gulp tasks
 * Wire-up dependencies installed with [Bower](http://bower.io)
 * The gulpfile makes use of [ES2015 features](https://babeljs.io/docs/learn-es2015/) by using [Babel](https://babeljs.io)
 * Many other customizations...
@@ -48,6 +49,19 @@ If your favorite feature is missing and you really need Ruby Sass, you can alway
 ## Additional Tasks
 
 - Run `gulp bootlint` to lint Bootstrap markup. This is currently a standalone task and will only lint the index.html file in the app/ directory. Feel free to customize as necessary.
+
+
+## Specifying a Custom Gulp directory
+
+By default, the generator assumes that all development will take place in app/ ... and that our final product will end up in dist/. However, certain projects might warrant having *multiple* client directories. In a situation like this, we must pass our Gulp tasks flags that specify the target directory for these processes. Imagine that we clone a project into a new directory "clients/wholefoods":
+
+`git clone <repo URL here> clients`
+
+In order to run Gulp in this new directory, we must include additional flags as follows:
+
+`gulp serve --from=clients/wholefoods --appDir=app/adv/1 --distDir=dist/adv/1`
+or
+`gulp serve --appDir=clients/wholefoods/app/adv/1 --distDir=clients/wholefoods/dist/adv/1`
 
 
 ## Docs
