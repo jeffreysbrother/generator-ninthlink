@@ -65,6 +65,8 @@ In order to run Gulp in this new directory, we must include additional flags as 
 
 `gulp serve --appDir=clients/wholefoods/app/adv/1 --distDir=clients/wholefoods/dist/adv/1`
 
+This methodology will allow us to import multiple pre-designed starter templates for a number of different clients within *one* repository.
+
 
 ## Docs
 
