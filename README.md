@@ -53,14 +53,16 @@ If your favorite feature is missing and you really need Ruby Sass, you can alway
 
 ## Specifying a Custom Gulp directory
 
-By default, the generator assumes that all development will take place in app/ ... and that our final product will end up in dist/. However, certain projects might warrant having *multiple* client directories. In a situation like this, we must pass our Gulp tasks flags that specify the target directory for these processes. Imagine that we clone a project into a new directory "clients/wholefoods":
+By default, the generator assumes that all development will take place in app/ ... and that our final product will end up in dist/. However, certain projects might warrant having *multiple* client directories. In a situation like this, we must pass our Gulp tasks flags that specify the target directory for these processes. Imagine that we clone a project into a new directory called "clients/wholefoods":
 
 `git clone <repo URL here> clients`
 
 In order to run Gulp in this new directory, we must include additional flags as follows:
 
 `gulp serve --from=clients/wholefoods --appDir=app/adv/1 --distDir=dist/adv/1`
-or
+
+**or**
+
 `gulp serve --appDir=clients/wholefoods/app/adv/1 --distDir=clients/wholefoods/dist/adv/1`
 
 
