@@ -80,9 +80,9 @@ gulp.task('html', ['styles'], () => {
 <% } -%>
   return gulp.src(customAppDir + '/*.html')
     .pipe($.useref({searchPath: [customDir + '.tmp', customAppDir, customDir + '.']}))
-    .pipe($.if('*.js', $.uglify({compress: {drop_console: true}})))
+    .pipe($.if(/\.js/, $.uglify({compress: {drop_console: true}})))
     <% if (includeUncss) { -%>
-    .pipe($.if('*.css', $.uncss({
+    .pipe($.if(/\.css/, $.uncss({
             html: [customAppDir + '/index.html'],
             ignore: [/\w\.in/,
                     '.fade',
@@ -106,8 +106,8 @@ gulp.task('html', ['styles'], () => {
                     '.modal-backdrop']
         })))
     <% } -%>
-    .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false, discardComments: {removeAll: true}})))
-    .pipe($.if('*.html', $.htmlmin({
+    .pipe($.if(/\.css/, $.cssnano({safe: true, autoprefixer: false, discardComments: {removeAll: true}})))
+    .pipe($.if(/\.html/, $.htmlmin({
       collapseWhitespace: true,
       minifyCSS: true,
       minifyJS: {compress: {drop_console: true}},
