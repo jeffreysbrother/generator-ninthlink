@@ -48,10 +48,10 @@ gulp.task('styles', () => {<% if (includeSass) { %>
 gulp.task('scripts', () => {
   return gulp.src(customAppDir + '/scripts/**/*.js')
     .pipe($.plumber())
-    .pipe($.if(dev, $.sourcemaps.init())
+    .pipe($.if(dev, $.sourcemaps.init()))
     .pipe($.babel())
     .pipe($.if(dev, $.sourcemaps.write('.')))
-    .pipe(gulp.dest(customDir + '.tmp/scripts')))
+    .pipe(gulp.dest(customDir + '.tmp/scripts'))
     .pipe(reload({stream: true}));
 });
 <% } -%>
@@ -80,9 +80,9 @@ gulp.task('html', ['styles'], () => {
 <% } -%>
   return gulp.src(customAppDir + '/*.html')
     .pipe($.useref({searchPath: [customDir + '.tmp', customAppDir, customDir + '.']}))
-    .pipe($.if('/\.js$/', $.uglify({compress: {drop_console: true}})))
+    .pipe($.if('*.js', $.uglify({compress: {drop_console: true}})))
     <% if (includeUncss) { -%>
-    .pipe($.if('/\.css$/b', $.uncss({
+    .pipe($.if('*.css', $.uncss({
             html: [customAppDir + '/index.html'],
             ignore: [/\w\.in/,
                     '.fade',
@@ -106,8 +106,8 @@ gulp.task('html', ['styles'], () => {
                     '.modal-backdrop']
         })))
     <% } -%>
-    .pipe($.if('/\.css$/b', $.cssnano({safe: true, autoprefixer: false, discardComments: {removeAll: true}})))
-    .pipe($.if('/\.html$/', $.htmlmin({
+    .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false, discardComments: {removeAll: true}})))
+    .pipe($.if('*.html', $.htmlmin({
       collapseWhitespace: true,
       minifyCSS: true,
       minifyJS: {compress: {drop_console: true}},
@@ -176,7 +176,7 @@ gulp.task('serve', () => {
 });
 });
 
-gulp.task('serve:dist', () => {
+gulp.task('serve:dist', ['default'], () => {
   browserSync.init({
     notify: false,
     port: customPort,
