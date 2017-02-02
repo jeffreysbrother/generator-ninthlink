@@ -1,7 +1,7 @@
 // generated on <%= date %> using <%= name %> <%= version %>
 const gulp = require('gulp');
 const gulpLoadPlugins = require('gulp-load-plugins');
-const browserSync = require('browser-sync');
+const browserSync = require('browser-sync').create();
 const del = require('del');
 const wiredep = require('wiredep').stream;
 const argv = require('yargs').argv;
@@ -86,7 +86,7 @@ gulp.task('html', ['styles', 'scripts'], () => {
 <% } else { -%>
 gulp.task('html', ['styles'], () => {
 <% } -%>
-  return gulp.src(customAppDir + '/*.html') 
+  return gulp.src(customAppDir + '/*.html')
     .pipe($.useref({searchPath: [customDir + '.tmp', customAppDir, customDir + '.']}))
     .pipe($.if('*.js', $.uglify()))
     <% if (includeUncss) { -%>
@@ -150,7 +150,7 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
 <% } else { -%>
 gulp.task('serve', ['styles', 'fonts'], () => {
 <% } -%>
-  browserSync({
+  browserSync.init({
     notify: false,
     port: customPort,
     server: {
@@ -179,7 +179,7 @@ gulp.task('serve', ['styles', 'fonts'], () => {
 });
 
 gulp.task('serve:dist', () => {
-  browserSync({
+  browserSync.init({
     notify: false,
     port: customPort,
     server: {
@@ -193,7 +193,7 @@ gulp.task('serve:test', ['scripts'], () => {
 <% } else { -%>
 gulp.task('serve:test', () => {
 <% } -%>
-  browserSync({
+  browserSync.init({
     notify: false,
     port: customPort,
     ui: false,
