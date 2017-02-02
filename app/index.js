@@ -6,7 +6,6 @@ var wiredep = require('wiredep');
 var mkdirp = require('mkdirp');
 var _s = require('underscore.string');
 
-
 module.exports = generators.Base.extend({
   constructor: function () {
     var testLocal;
@@ -55,9 +54,6 @@ module.exports = generators.Base.extend({
   },
 
   prompting: function () {
-    var done = this.async();
-
-
     if (!this.options['skip-welcome-message']) {
 
       // this will override the default greeting ASCII art
@@ -130,7 +126,7 @@ module.exports = generators.Base.extend({
       }
     }];
 
-    this.prompt(prompts, function (answers) {
+    return this.prompt(prompts).then(function (answers) {
       var features = answers.features;
 
       function hasFeature(feat) {
@@ -146,7 +142,6 @@ module.exports = generators.Base.extend({
       this.includeUncss = hasFeature('includeUncss');
       this.includeJQuery = answers.includeJQuery;
 
-      done();
     }.bind(this));
   },
 
@@ -284,7 +279,7 @@ module.exports = generators.Base.extend({
         var variables_partial = '_variables.scss';
         var components_partial = '_components.scss';
         var utilities_partial = '_utilities.scss';
-        
+
         this.fs.copy(
           this.templatePath(header_partial),
           this.destinationPath('app/styles/' + header_partial));
@@ -300,7 +295,7 @@ module.exports = generators.Base.extend({
         this.fs.copy(
           this.templatePath(utilities_partial),
           this.destinationPath('app/styles/' + utilities_partial));
-          
+
       } else {
         css += '.css';
       }
@@ -312,9 +307,9 @@ module.exports = generators.Base.extend({
           includeBootstrap: this.includeBootstrap
         }
       );
-      
+
     },
-    
+
 
     scripts: function () {
       this.fs.copy(
@@ -369,11 +364,11 @@ module.exports = generators.Base.extend({
     misc: function () {
       mkdirp('app/images');
       mkdirp('app/fonts');
-      
+
       // initialize Git repo prior to installing dependencies,
       // so it still works if the user skips dependency installation
       this.spawnCommandSync('git', ['init']);
-      
+
     }
   },
 
@@ -417,6 +412,6 @@ module.exports = generators.Base.extend({
         src: 'app/styles/*.scss'
       });
     }
-    
+
   }
 });
