@@ -13,24 +13,24 @@
 7 silly cache add   rawSpec: '.',
 7 silly cache add   spec: '/var/www/html/personal/generator-ninthlink',
 7 silly cache add   type: 'directory' }
-8 verbose addLocalDirectory /home/jeffreysbrother/.npm/generator-ninthlink/1.5.2/package.tgz not in flight; packing
+8 verbose addLocalDirectory /home/jeffreysbrother/.npm/generator-ninthlink/1.5.3/package.tgz not in flight; packing
 9 verbose correctMkdir /home/jeffreysbrother/.npm correctMkdir not in flight; initializing
-10 info lifecycle generator-ninthlink@1.5.2~prepublish: generator-ninthlink@1.5.2
-11 silly lifecycle generator-ninthlink@1.5.2~prepublish: no script for prepublish, continuing
-12 info lifecycle generator-ninthlink@1.5.2~prepare: generator-ninthlink@1.5.2
-13 silly lifecycle generator-ninthlink@1.5.2~prepare: no script for prepare, continuing
-14 verbose tar pack [ '/home/jeffreysbrother/.npm/generator-ninthlink/1.5.2/package.tgz',
+10 info lifecycle generator-ninthlink@1.5.3~prepublish: generator-ninthlink@1.5.3
+11 silly lifecycle generator-ninthlink@1.5.3~prepublish: no script for prepublish, continuing
+12 info lifecycle generator-ninthlink@1.5.3~prepare: generator-ninthlink@1.5.3
+13 silly lifecycle generator-ninthlink@1.5.3~prepare: no script for prepare, continuing
+14 verbose tar pack [ '/home/jeffreysbrother/.npm/generator-ninthlink/1.5.3/package.tgz',
 14 verbose tar pack   '/var/www/html/personal/generator-ninthlink' ]
-15 verbose tarball /home/jeffreysbrother/.npm/generator-ninthlink/1.5.2/package.tgz
+15 verbose tarball /home/jeffreysbrother/.npm/generator-ninthlink/1.5.3/package.tgz
 16 verbose folder /var/www/html/personal/generator-ninthlink
-17 verbose addLocalTarball adding from inside cache /home/jeffreysbrother/.npm/generator-ninthlink/1.5.2/package.tgz
+17 verbose addLocalTarball adding from inside cache /home/jeffreysbrother/.npm/generator-ninthlink/1.5.3/package.tgz
 18 verbose correctMkdir /home/jeffreysbrother/.npm correctMkdir not in flight; initializing
-19 silly cache afterAdd generator-ninthlink@1.5.2
-20 verbose afterAdd /home/jeffreysbrother/.npm/generator-ninthlink/1.5.2/package/package.json not in flight; writing
+19 silly cache afterAdd generator-ninthlink@1.5.3
+20 verbose afterAdd /home/jeffreysbrother/.npm/generator-ninthlink/1.5.3/package/package.json not in flight; writing
 21 verbose correctMkdir /home/jeffreysbrother/.npm correctMkdir not in flight; initializing
-22 verbose afterAdd /home/jeffreysbrother/.npm/generator-ninthlink/1.5.2/package/package.json written
+22 verbose afterAdd /home/jeffreysbrother/.npm/generator-ninthlink/1.5.3/package/package.json written
 23 silly publish { name: 'generator-ninthlink',
-23 silly publish   version: '1.5.2',
+23 silly publish   version: '1.5.3',
 23 silly publish   description: 'generator-webapp + uncss, bootlint, etc.',
 23 silly publish   license: 'BSD-2-Clause',
 23 silly publish   repository:
@@ -71,14 +71,14 @@
 23 silly publish   devDependencies: { mocha: '3.1.0', 'yeoman-test': '^1.5.0' },
 23 silly publish   readme: '# Ninthlink Web app generator [![Build Status](https://secure.travis-ci.org/jeffreysbrother/generator-ninthlink.svg?branch=master)](http://travis-ci.org/jeffreysbrother/generator-ninthlink) [![Join the chat at https://gitter.im/jeffreysbrother/generator-ninthlink](https://badges.gitter.im/jeffreysbrother/generator-ninthlink.svg)](https://gitter.im/jeffreysbrother/generator-ninthlink?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\n> [Yeoman](http://yeoman.io) generator that scaffolds out a front-end web app using [gulp](http://gulpjs.com/) for the build process. A modified version of [this generator](https://github.com/yeoman/generator-webapp).\n\n\n## Features\n\nPlease see the [gulpfile](app/templates/gulpfile.js) for up-to-date information on what we support.\n\n* Bootstrap, Sass, and HTML5 Boilerplate (jQuery, Normalize.css, etc.)\n* UnCSS (customized for use with Bootstrap)\n* JS, CSS, and HTML Minification\n* CSS Autoprefixing\n* Built-in preview server with BrowserSync\n* Compile Sass with [libsass](http://libsass.org)\n* Lint your scripts\n* Lint Bootstrap HTML with gulp-bootlint\n* Source maps\n* Image optimization\n* Git initialization\n* Choose between Google Tag Manager and Google Analytics\n* Use [yargs](https://www.npmjs.com/package/yargs) to customize the target directory of Gulp tasks\n* Wire-up dependencies installed with [Bower](http://bower.io)\n* The gulpfile makes use of [ES2015 features](https://babeljs.io/docs/learn-es2015/) by using [Babel](https://babeljs.io)\n* Many other customizations...\n\n*For more information on what this generator can do for you, take a look at the [gulp plugins](app/templates/_package.json) used in our `package.json`.*\n\n\n## libsass\n\nKeep in mind that libsass is feature-wise not fully compatible with Ruby Sass. Check out [this](http://sass-compatibility.github.io) curated list of incompatibilities to find out which features are missing.\n\nIf your favorite feature is missing and you really need Ruby Sass, you can always switch to [gulp-ruby-sass](https://github.com/sindresorhus/gulp-ruby-sass) and update the `styles` task in gulpfile accordingly.\n\n\n## Getting Started\n\n- Install [Node](https://nodejs.org/en/)\n- Install other dependencies: `npm install --global yo gulp-cli bower`\n- Install the generator: `npm install --global generator-ninthlink`\n- Run `yo ninthlink` to scaffold your web app\n- Run `gulp serve` to preview and watch for changes\n- Run `gulp serve:test` to run the tests in the browser\n- Run `gulp` to build your web app for production\n- Run `gulp serve:dist` to preview the production build\n\n\n## Additional Tasks\n\n- Run `gulp bootlint` to lint Bootstrap markup. This is currently a standalone task and will only lint the index.html file in the app/ directory. Feel free to customize as necessary.\n\n\n## Specifying a Custom Gulp directory\n\nBy default, the generator assumes that all development will take place in app/ ... and that our final product will end up in dist/. However, certain projects might warrant having *multiple* client directories. In a situation like this, we must pass our Gulp tasks flags that specify the target directory for these processes. Imagine that we clone a project into a new directory called "clients/wholefoods":\n\n`git clone <repo URL here> clients/wholefoods`\n\nIn order to run Gulp in this new directory, we must include additional flags as follows:\n\n`--from=clients/wholefoods --appDir=app/adv/1 --distDir=dist/adv/1`\n\n**or**\n\n`--appDir=clients/wholefoods/app/adv/1 --distDir=clients/wholefoods/dist/adv/1`\n\nThis methodology will allow us to import multiple pre-designed starter templates for a number of different clients within *one* repository.\n\n\n## Docs\n\n* [getting started](docs/README.md) with this generator\n* [recipes](docs/recipes/README.md) for integrating other popular technologies like CoffeeScript\n* [details](docs/bower.md) about our Bower setup\n* [contribution](contributing.md) docs and [FAQ](docs/faq.md), good to check before posting an issue\n\n\n## Options\n\n- `--skip-welcome-message`\n  Skips Yeoman\'s greeting before displaying options.\n- `--skip-install-message`\n  Skips the the message displayed after scaffolding has finished and before the dependencies are being installed.\n- `--skip-install`\n  Skips the automatic execution of `bower` and `npm` after scaffolding has finished.\n- `--test-framework=<framework>`\n  Either `mocha` or `jasmine`. Defaults to `mocha`.\n- `--no-babel`\n  Scaffolds without [Babel](http://babeljs.io) support (this only applies to `app/scripts`, you can still write ES2015 in the gulpfile)\n\n\n## License\n\n[BSD license](http://opensource.org/licenses/bsd-license.php)\n',
 23 silly publish   readmeFilename: 'README.md',
-23 silly publish   gitHead: '5861837f45c1af265d129b3a1a0166abc7930925',
+23 silly publish   gitHead: '3c04d594f60b394615e3e4aa96483a596b529f58',
 23 silly publish   bugs: { url: 'https://github.com/jeffreysbrother/generator-ninthlink/issues' },
 23 silly publish   homepage: 'https://github.com/jeffreysbrother/generator-ninthlink#readme',
-23 silly publish   _id: 'generator-ninthlink@1.5.2',
-23 silly publish   _shasum: 'b4f6695317b24820f3eec2efcad8cc388351da22',
+23 silly publish   _id: 'generator-ninthlink@1.5.3',
+23 silly publish   _shasum: '93099a1e7c022aa142183f41553fb546e31922e0',
 23 silly publish   _from: '.' }
-24 info lifecycle generator-ninthlink@1.5.2~prepublishOnly: generator-ninthlink@1.5.2
-25 silly lifecycle generator-ninthlink@1.5.2~prepublishOnly: no script for prepublishOnly, continuing
+24 info lifecycle generator-ninthlink@1.5.3~prepublishOnly: generator-ninthlink@1.5.3
+25 silly lifecycle generator-ninthlink@1.5.3~prepublishOnly: no script for prepublishOnly, continuing
 26 verbose getPublishConfig undefined
 27 silly mapToRegistry name generator-ninthlink
 28 silly mapToRegistry using default registry
@@ -93,29 +93,29 @@
 30 silly mapToRegistry   type: 'tag' }
 31 silly mapToRegistry uri https://registry.npmjs.org/generator-ninthlink
 32 verbose publish registryBase https://registry.npmjs.org/
-33 silly publish uploading /home/jeffreysbrother/.npm/generator-ninthlink/1.5.2/package.tgz
+33 silly publish uploading /home/jeffreysbrother/.npm/generator-ninthlink/1.5.3/package.tgz
 34 verbose request uri https://registry.npmjs.org/generator-ninthlink
 35 verbose request sending authorization for write operation
-36 info attempt registry request try #1 at 1:08:05 PM
+36 info attempt registry request try #1 at 1:08:52 PM
 37 verbose request using bearer token for auth
-38 verbose request id a1a361d750ab3123
+38 verbose request id 9899f886305a710c
 39 http request PUT https://registry.npmjs.org/generator-ninthlink
 40 http 403 https://registry.npmjs.org/generator-ninthlink
 41 verbose headers { 'content-type': 'application/json',
 41 verbose headers   'cache-control': 'max-age=300',
 41 verbose headers   'content-length': '95',
 41 verbose headers   'accept-ranges': 'bytes',
-41 verbose headers   date: 'Thu, 02 Feb 2017 21:08:05 GMT',
+41 verbose headers   date: 'Thu, 02 Feb 2017 21:08:53 GMT',
 41 verbose headers   via: '1.1 varnish',
 41 verbose headers   connection: 'keep-alive',
-41 verbose headers   'x-served-by': 'cache-sjc3637-SJC',
+41 verbose headers   'x-served-by': 'cache-sjc3632-SJC',
 41 verbose headers   'x-cache': 'MISS',
 41 verbose headers   'x-cache-hits': '0',
-41 verbose headers   'x-timer': 'S1486069685.737361,VS0,VE102',
+41 verbose headers   'x-timer': 'S1486069733.224954,VS0,VE195',
 41 verbose headers   vary: 'Accept-Encoding' }
 42 verbose request invalidating /home/jeffreysbrother/.npm/registry.npmjs.org/generator-ninthlink on PUT
 43 error publish Failed PUT 403
-44 verbose stack Error: "You cannot publish over the previously published version 1.5.2." : generator-ninthlink
+44 verbose stack Error: "You cannot publish over the previously published version 1.5.3." : generator-ninthlink
 44 verbose stack     at makeError (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:304:12)
 44 verbose stack     at CachingRegistryClient.<anonymous> (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:292:14)
 44 verbose stack     at Request._callback (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:212:14)
@@ -134,7 +134,7 @@
 50 error node v6.9.4
 51 error npm  v4.1.2
 52 error code E403
-53 error "You cannot publish over the previously published version 1.5.2." : generator-ninthlink
+53 error "You cannot publish over the previously published version 1.5.3." : generator-ninthlink
 54 error If you need help, you may report this error at:
 54 error     <https://github.com/npm/npm/issues>
 55 verbose exit [ 1, true ]
