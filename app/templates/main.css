@@ -25,7 +25,7 @@
   }
 
   li a {
-    color: #F40051;
+    color: #F40051!important;
   }
   li a:hover {
     text-decoration: none;
@@ -34,7 +34,7 @@
   li a:visited {
     color: #FB8C00;
   }
-  
+
   @media screen and (max-width: 768px) {
     .container {
       padding-top: 0;
