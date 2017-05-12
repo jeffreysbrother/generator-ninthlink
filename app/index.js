@@ -1,14 +1,14 @@
 'use strict';
-let generators = require('yeoman-generator');
-let yosay = require('yosay');
-let chalk = require('chalk');
-let wiredep = require('wiredep');
-let mkdirp = require('mkdirp');
-let _s = require('underscore.string');
+var generators = require('yeoman-generator');
+var yosay = require('yosay');
+var chalk = require('chalk');
+var wiredep = require('wiredep');
+var mkdirp = require('mkdirp');
+var _s = require('underscore.string');
 
 module.exports = generators.Base.extend({
   constructor: function () {
-    let testLocal;
+    var testLocal;
 
     generators.Base.apply(this, arguments);
 
@@ -91,7 +91,7 @@ module.exports = generators.Base.extend({
       this.log(yosay('Yo Ninthlink! Out of the box I include HTML5 Boilerplate, jQuery, UnCSS, and many more useful tools.'));
     }
 
-    let prompts = [{
+    var prompts = [{
       type: 'checkbox',
       name: 'features',
       message: 'What more would you like?',
@@ -127,7 +127,7 @@ module.exports = generators.Base.extend({
     }];
 
     return this.prompt(prompts).then(function (answers) {
-      let features = answers.features;
+      var features = answers.features;
 
       function hasFeature(feat) {
         return features && features.indexOf(feat) !== -1;
@@ -200,7 +200,7 @@ module.exports = generators.Base.extend({
     },
 
     bower: function () {
-      let bowerJson = {
+      var bowerJson = {
         name: _s.slugify(this.appname),
         private: true,
         dependencies: {}
@@ -270,15 +270,15 @@ module.exports = generators.Base.extend({
     },
 
     styles: function () {
-      let css = 'main';
+      var css = 'main';
 
       if (this.includeSass) {
         css += '.scss';
-        let header_partial = '_header.scss';
-        let footer_partial = '_footer.scss';
-        let variables_partial = '_variables.scss';
-        let components_partial = '_components.scss';
-        let utilities_partial = '_utilities.scss';
+        var header_partial = '_header.scss';
+        var footer_partial = '_footer.scss';
+        var variables_partial = '_variables.scss';
+        var components_partial = '_components.scss';
+        var utilities_partial = '_utilities.scss';
 
         this.fs.copy(
           this.templatePath(header_partial),
@@ -319,7 +319,7 @@ module.exports = generators.Base.extend({
     },
 
     html: function () {
-      let bsPath;
+      var bsPath;
 
       // path prefix for Bootstrap JS files
       if (this.includeBootstrap) {
@@ -380,8 +380,8 @@ module.exports = generators.Base.extend({
   },
 
   end: function () {
-    let bowerJson = this.fs.readJSON(this.destinationPath('bower.json'));
-    let howToInstall =
+    var bowerJson = this.fs.readJSON(this.destinationPath('bower.json'));
+    var howToInstall =
       '\nAfter running ' +
       chalk.yellow.bold('npm install & bower install') +
       ', inject your' +
