@@ -1,16 +1,15 @@
 'use strict';
-var generators = require('yeoman-generator');
-var yosay = require('yosay');
-var chalk = require('chalk');
-var wiredep = require('wiredep');
-var mkdirp = require('mkdirp');
-var _s = require('underscore.string');
+const Generator = require('yeoman-generator');
+const commandExists = require('command-exists').sync;
+const yosay = require('yosay');
+const chalk = require('chalk');
+const wiredep = require('wiredep');
+const mkdirp = require('mkdirp');
+const _s = require('underscore.string');
 
-module.exports = generators.Base.extend({
-  constructor: function () {
-    var testLocal;
-
-    generators.Base.apply(this, arguments);
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
 
     this.option('skip-welcome-message', {
       desc: 'Skips the welcome message',
@@ -33,65 +32,24 @@ module.exports = generators.Base.extend({
       type: Boolean,
       defaults: true
     });
+  }
 
-    if (this.options['test-framework'] === 'mocha') {
-      testLocal = require.resolve('generator-mocha/generators/app/index.js');
-    } else if (this.options['test-framework'] === 'jasmine') {
-      testLocal = require.resolve('generator-jasmine/generators/app/index.js');
-    }
-
-    this.composeWith(this.options['test-framework'] + ':app', {
-      options: {
-        'skip-install': this.options['skip-install']
-      }
-    }, {
-      local: testLocal
-    });
-  },
-
-  initializing: function () {
+  initializing() {
     this.pkg = require('../package.json');
-  },
+    this.composeWith(
+      require.resolve(`generator-${this.options['test-framework']}/generators/app`),
+      { 'skip-install': this.options['skip-install'] }
+    );
+  }
 
-  prompting: function () {
+  prompting() {
     if (!this.options['skip-welcome-message']) {
-
-      // this will override the default greeting ASCII art
-      // this.log(yosay.defaultGreeting =
-      // '\n                      '+chalk.yellow('9') +
-      // '\n                  '+chalk.yellow('9')+'       '+chalk.yellow('9') +
-      // '\n              '+chalk.yellow('9')+'       L       '+chalk.yellow('9') +
-      // '\n          '+chalk.yellow('9')+'       L       L       '+chalk.yellow('9') +
-      // '\n      '+chalk.yellow('9')+'       L       L       L       '+chalk.yellow('9') +
-      // '\n      '+chalk.yellow('9   9')+'       L       L       '+chalk.yellow('9')+chalk.red('///9') +
-      // '\n      '+chalk.yellow('9   l   9')+'       L       '+chalk.yellow('9')+chalk.red('///////9') +
-      // '\n      '+chalk.yellow('9   l   l   9')+'       '+chalk.yellow('9')+chalk.red('.//////////9') +
-      // '\n      '+chalk.yellow('9   l   l   l   9')+'          '+chalk.red('.9///9') +
-      // '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('.')+'             '+chalk.red('.9') +
-      // '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('///9.') +
-      // '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('///////9.') +
-      // '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('///////////9.') +
-      // '\n      '+chalk.yellow('9   l   l   l   9')+chalk.red('///////////////')+chalk.yellow('9') +
-      // '\n          '+chalk.yellow('9   l   l   9')+chalk.red('///////////')+chalk.yellow('9   9') +
-      // '\n              '+chalk.yellow('9   l   9')+chalk.red('///////')+chalk.yellow('9   l   9') +
-      // '\n                  '+chalk.yellow('9   9')+chalk.red('///')+chalk.yellow('9   l   l   9') +
-      // '\n                      '+chalk.yellow('9   l   l   l   9') +
-      // '\n                      '+chalk.yellow('9   l   l   l   9') +
-      // '\n                      '+chalk.yellow('9   l   l   l   9') +
-      // '\n                      '+chalk.yellow('9   l   l   l   9') +
-      // '\n                      '+chalk.yellow('9   l   l   l   9') +
-      // '\n                      '+chalk.yellow('9   l   l   9') +
-      // '\n                      '+chalk.yellow('9   l   9') +
-      // '\n                      '+chalk.yellow('9   9') +
-      // '\n                      '+chalk.yellow('9') +
-      // '\n   ' +
-      // '\n   ');
 
       // commented out becasue this dumps the message AND the default ASCII ART
       this.log(yosay('Yo Ninthlink! Out of the box I include HTML5 Boilerplate, jQuery, UnCSS, and many more useful tools.'));
     }
 
-    var prompts = [{
+    const prompts = [{
       type: 'checkbox',
       name: 'features',
       message: 'What more would you like?',
@@ -121,17 +79,12 @@ module.exports = generators.Base.extend({
       name: 'includeJQuery',
       message: 'Would you like to include jQuery?',
       default: true,
-      when: function (answers) {
-        return answers.features.indexOf('includeBootstrap') === -1;
-      }
+      when: answers => answers.features.indexOf('includeBootstrap') === -1
     }];
 
-    return this.prompt(prompts).then(function (answers) {
-      var features = answers.features;
-
-      function hasFeature(feat) {
-        return features && features.indexOf(feat) !== -1;
-      };
+    return this.prompt(prompts).then(answers=> {
+      const { features } = answers;
+      const hasFeature = feat => features && features.indexOf(feat) !== -1;
 
       // manually deal with the response, get back and store the results.
       // we change a bit this way of doing to automatically do this in the self.prompt() method.
@@ -142,11 +95,25 @@ module.exports = generators.Base.extend({
       this.includeUncss = hasFeature('includeUncss');
       this.includeJQuery = answers.includeJQuery;
 
-    }.bind(this));
-  },
+    });
+  }
 
-  writing: {
-    gulpfile: function () {
+  writing() {
+    this._writingGulpfile();
+    this._writingPackageJSON();
+    this._writingBabel();
+    this._writingHtaccess();
+    this._writingGit();
+    this._writingBower();
+    this._writingEditorConfig();
+    this._writingH5bp();
+    this._writingStyles();
+    this._writingScripts();
+    this._writingHtml();
+    this._writingMisc();
+  }
+
+    _writingGulpfile() {
       this.fs.copyTpl(
         this.templatePath('gulpfile.js'),
         this.destinationPath('gulpfile.js'),
@@ -161,9 +128,9 @@ module.exports = generators.Base.extend({
           testFramework: this.options['test-framework']
         }
       );
-    },
+    }
 
-    packageJSON: function () {
+    _writingPackageJSON() {
       this.fs.copyTpl(
         this.templatePath('_package.json'),
         this.destinationPath('package.json'),
@@ -173,23 +140,23 @@ module.exports = generators.Base.extend({
           includeBabel: this.options['babel']
         }
       );
-    },
+    }
 
-    babel: function () {
+    _writingBabel() {
       this.fs.copy(
         this.templatePath('babelrc'),
         this.destinationPath('.babelrc')
       );
-    },
+    }
 
-    htaccess: function () {
+    _writingHtaccess() {
       this.fs.copy(
         this.templatePath('htaccess'),
         this.destinationPath('app/.htaccess')
       );
-    },
+    }
 
-    git: function () {
+    _writingGit() {
       this.fs.copy(
         this.templatePath('gitignore'),
         this.destinationPath('.gitignore'));
@@ -197,10 +164,10 @@ module.exports = generators.Base.extend({
       this.fs.copy(
         this.templatePath('gitattributes'),
         this.destinationPath('.gitattributes'));
-    },
+    }
 
-    bower: function () {
-      var bowerJson = {
+    _writingBower() {
+      const bowerJson = {
         name: _s.slugify(this.appname),
         private: true,
         dependencies: {}
@@ -208,7 +175,9 @@ module.exports = generators.Base.extend({
 
       if (this.includeBootstrap) {
         if (this.includeSass) {
-          bowerJson.dependencies['bootstrap-sass'] = '~3.3.5';
+          bowerJson.dependencies = {
+            'bootstrap-sass': '~3.3.5'
+          };
           bowerJson.overrides = {
             'bootstrap-sass': {
               'main': [
@@ -219,7 +188,9 @@ module.exports = generators.Base.extend({
             }
           };
         } else {
-          bowerJson.dependencies['bootstrap'] = '~3.3.5';
+          bowerJson.dependencies = {
+            'bootstrap': '~3.3.5'
+          };
           bowerJson.overrides = {
             'bootstrap': {
               'main': [
@@ -244,16 +215,16 @@ module.exports = generators.Base.extend({
         this.templatePath('bowerrc'),
         this.destinationPath('.bowerrc')
       );
-    },
+    }
 
-    editorConfig: function () {
+    _writingEditorConfig() {
       this.fs.copy(
         this.templatePath('editorconfig'),
         this.destinationPath('.editorconfig')
       );
-    },
+    }
 
-    h5bp: function () {
+    _writingH5bp() {
       this.fs.copy(
         this.templatePath('favicon.ico'),
         this.destinationPath('app/favicon.ico')
@@ -267,18 +238,18 @@ module.exports = generators.Base.extend({
       this.fs.copy(
         this.templatePath('robots.txt'),
         this.destinationPath('app/robots.txt'));
-    },
+    }
 
-    styles: function () {
-      var css = 'main';
+    _writingStyles() {
+      let css = 'main';
 
       if (this.includeSass) {
         css += '.scss';
-        var header_partial = '_header.scss';
-        var footer_partial = '_footer.scss';
-        var variables_partial = '_variables.scss';
-        var components_partial = '_components.scss';
-        var utilities_partial = '_utilities.scss';
+        let header_partial = '_header.scss';
+        let footer_partial = '_footer.scss';
+        let variables_partial = '_variables.scss';
+        let components_partial = '_components.scss';
+        let utilities_partial = '_utilities.scss';
 
         this.fs.copy(
           this.templatePath(header_partial),
@@ -308,27 +279,40 @@ module.exports = generators.Base.extend({
         }
       );
 
-    },
+    }
 
 
-    scripts: function () {
+    _writingScripts() {
       this.fs.copy(
         this.templatePath('main.js'),
         this.destinationPath('app/scripts/main.js')
       );
-    },
+    }
 
-    html: function () {
-      var bsPath;
+    _writingHtml() {
+      let bsPath, bsPlugins;
 
       // path prefix for Bootstrap JS files
       if (this.includeBootstrap) {
-        bsPath = '/bower_components/';
+        bsPath = '/bower_components/bootstrap/js/dist/';
+        bsPlugins = [
+          'util',
+          'alert',
+          'button',
+          'carousel',
+          'collapse',
+          'dropdown',
+          'modal',
+          'scrollspy',
+          'tab',
+          'tooptip',
+          'popover'
+        ];
 
         if (this.includeSass) {
-          bsPath += 'bootstrap-sass/assets/javascripts/bootstrap/';
+          bsPath += '/bower_components/bootstrap-sass/assets/javascripts/bootstrap/';
         } else {
-          bsPath += 'bootstrap/js/';
+          bsPath += '/bower_components/bootstrap/js/';
         }
       }
 
@@ -343,45 +327,33 @@ module.exports = generators.Base.extend({
           includeTagManager: this.includeTagManager,
           includeJQuery: this.includeJQuery,
           bsPath: bsPath,
-          bsPlugins: [
-            'affix',
-            'alert',
-            'dropdown',
-            'tooltip',
-            'modal',
-            'transition',
-            'button',
-            'popover',
-            'carousel',
-            'scrollspy',
-            'collapse',
-            'tab'
-          ]
+          bsPlugins: bsPlugins
         }
       );
-    },
+    }
 
-    misc: function () {
+    _writingMisc() {
       mkdirp('app/images');
       mkdirp('app/fonts');
-
       // initialize Git repo prior to installing dependencies,
       // so it still works if the user skips dependency installation
       this.spawnCommandSync('git', ['init']);
-
     }
-  },
 
-  install: function () {
+  install() {
+    const hasYarn = commandExists('yarn');
     this.installDependencies({
+      npm: !hasYarn,
+      bower: true,
+      yarn: hasYarn,
       skipMessage: this.options['skip-install-message'],
       skipInstall: this.options['skip-install']
     });
-  },
+  }
 
-  end: function () {
-    var bowerJson = this.fs.readJSON(this.destinationPath('bower.json'));
-    var howToInstall =
+  end() {
+    const bowerJson = this.fs.readJSON(this.destinationPath('bower.json'));
+    const howToInstall =
       '\nAfter running ' +
       chalk.yellow.bold('npm install & bower install') +
       ', inject your' +
@@ -414,4 +386,4 @@ module.exports = generators.Base.extend({
     }
 
   }
-});
+}
