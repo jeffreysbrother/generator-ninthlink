@@ -113,232 +113,231 @@ module.exports = class extends Generator {
     this._writingMisc();
   }
 
-    _writingGulpfile() {
-      this.fs.copyTpl(
-        this.templatePath('gulpfile.js'),
-        this.destinationPath('gulpfile.js'),
-        {
-          date: (new Date).toISOString().split('T')[0],
-          name: this.pkg.name,
-          version: this.pkg.version,
-          includeSass: this.includeSass,
-          includeBootstrap: this.includeBootstrap,
-          includeUncss: this.includeUncss,
-          includeBabel: this.options['babel'],
-          testFramework: this.options['test-framework']
-        }
-      );
-    }
-
-    _writingPackageJSON() {
-      this.fs.copyTpl(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json'),
-        {
-          includeSass: this.includeSass,
-          includeUncss: this.includeUncss,
-          includeBabel: this.options['babel']
-        }
-      );
-    }
-
-    _writingBabel() {
-      this.fs.copy(
-        this.templatePath('babelrc'),
-        this.destinationPath('.babelrc')
-      );
-    }
-
-    _writingHtaccess() {
-      this.fs.copy(
-        this.templatePath('htaccess'),
-        this.destinationPath('app/.htaccess')
-      );
-    }
-
-    _writingGit() {
-      this.fs.copy(
-        this.templatePath('gitignore'),
-        this.destinationPath('.gitignore'));
-
-      this.fs.copy(
-        this.templatePath('gitattributes'),
-        this.destinationPath('.gitattributes'));
-    }
-
-    _writingBower() {
-      const bowerJson = {
-        name: _s.slugify(this.appname),
-        private: true,
-        dependencies: {}
-      };
-
-      if (this.includeBootstrap) {
-        if (this.includeSass) {
-          bowerJson.dependencies = {
-            'bootstrap-sass': '~3.3.5'
-          };
-          bowerJson.overrides = {
-            'bootstrap-sass': {
-              'main': [
-                'assets/stylesheets/_bootstrap.scss',
-                'assets/fonts/bootstrap/*',
-                'assets/javascripts/bootstrap.js'
-              ]
-            }
-          };
-        } else {
-          bowerJson.dependencies = {
-            'bootstrap': '~3.3.5'
-          };
-          bowerJson.overrides = {
-            'bootstrap': {
-              'main': [
-                'less/bootstrap.less',
-                'dist/css/bootstrap.css',
-                'dist/js/bootstrap.js',
-                'dist/fonts/*'
-              ]
-            }
-          };
-        }
-      } else if (this.includeJQuery) {
-        bowerJson.dependencies['jquery'] = '~2.1.1';
+  _writingGulpfile() {
+    this.fs.copyTpl(
+      this.templatePath('gulpfile.js'),
+      this.destinationPath('gulpfile.js'),
+      {
+        date: (new Date).toISOString().split('T')[0],
+        name: this.pkg.name,
+        version: this.pkg.version,
+        includeSass: this.includeSass,
+        includeBootstrap: this.includeBootstrap,
+        includeUncss: this.includeUncss,
+        includeBabel: this.options['babel'],
+        testFramework: this.options['test-framework']
       }
+    );
+  }
 
-      if (this.includeModernizr) {
-        bowerJson.dependencies['modernizr'] = '~2.8.1';
+  _writingPackageJSON() {
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath('package.json'),
+      {
+        includeSass: this.includeSass,
+        includeUncss: this.includeUncss,
+        includeBabel: this.options['babel']
       }
+    );
+  }
 
-      this.fs.writeJSON('bower.json', bowerJson);
-      this.fs.copy(
-        this.templatePath('bowerrc'),
-        this.destinationPath('.bowerrc')
-      );
+  _writingBabel() {
+    this.fs.copy(
+      this.templatePath('babelrc'),
+      this.destinationPath('.babelrc')
+    );
+  }
+
+  _writingHtaccess() {
+    this.fs.copy(
+      this.templatePath('htaccess'),
+      this.destinationPath('app/.htaccess')
+    );
+  }
+
+  _writingGit() {
+    this.fs.copy(
+      this.templatePath('gitignore'),
+      this.destinationPath('.gitignore'));
+
+    this.fs.copy(
+      this.templatePath('gitattributes'),
+      this.destinationPath('.gitattributes'));
+  }
+
+  _writingBower() {
+    const bowerJson = {
+      name: _s.slugify(this.appname),
+      private: true,
+      dependencies: {}
+    };
+
+    if (this.includeBootstrap) {
+      if (this.includeSass) {
+        bowerJson.dependencies = {
+          'bootstrap-sass': '~3.3.5'
+        };
+        bowerJson.overrides = {
+          'bootstrap-sass': {
+            'main': [
+              'assets/stylesheets/_bootstrap.scss',
+              'assets/fonts/bootstrap/*',
+              'assets/javascripts/bootstrap.js'
+            ]
+          }
+        };
+      } else {
+        bowerJson.dependencies = {
+          'bootstrap': '~3.3.5'
+        };
+        bowerJson.overrides = {
+          'bootstrap': {
+            'main': [
+              'less/bootstrap.less',
+              'dist/css/bootstrap.css',
+              'dist/js/bootstrap.js',
+              'dist/fonts/*'
+            ]
+          }
+        };
+      }
+    } else if (this.includeJQuery) {
+      bowerJson.dependencies['jquery'] = '~2.1.1';
     }
 
-    _writingEditorConfig() {
-      this.fs.copy(
-        this.templatePath('editorconfig'),
-        this.destinationPath('.editorconfig')
-      );
+    if (this.includeModernizr) {
+      bowerJson.dependencies['modernizr'] = '~2.8.1';
     }
 
-    _writingH5bp() {
-      this.fs.copy(
-        this.templatePath('favicon.ico'),
-        this.destinationPath('app/favicon.ico')
-      );
+    this.fs.writeJSON('bower.json', bowerJson);
+    this.fs.copy(
+      this.templatePath('bowerrc'),
+      this.destinationPath('.bowerrc')
+    );
+  }
+
+  _writingEditorConfig() {
+    this.fs.copy(
+      this.templatePath('editorconfig'),
+      this.destinationPath('.editorconfig')
+    );
+  }
+
+  _writingH5bp() {
+    this.fs.copy(
+      this.templatePath('favicon.ico'),
+      this.destinationPath('app/favicon.ico')
+    );
+
+    this.fs.copy(
+      this.templatePath('apple-touch-icon.png'),
+      this.destinationPath('app/apple-touch-icon.png')
+    );
+
+    this.fs.copy(
+      this.templatePath('robots.txt'),
+      this.destinationPath('app/robots.txt'));
+  }
+
+  _writingStyles() {
+    let css = 'main';
+
+    if (this.includeSass) {
+      css += '.scss';
+      let header_partial = '_header.scss';
+      let footer_partial = '_footer.scss';
+      let variables_partial = '_variables.scss';
+      let components_partial = '_components.scss';
+      let utilities_partial = '_utilities.scss';
 
       this.fs.copy(
-        this.templatePath('apple-touch-icon.png'),
-        this.destinationPath('app/apple-touch-icon.png')
-      );
-
+        this.templatePath(header_partial),
+        this.destinationPath('app/styles/' + header_partial));
       this.fs.copy(
-        this.templatePath('robots.txt'),
-        this.destinationPath('app/robots.txt'));
+        this.templatePath(footer_partial),
+        this.destinationPath('app/styles/' + footer_partial));
+      this.fs.copy(
+        this.templatePath(variables_partial),
+        this.destinationPath('app/styles/' + variables_partial));
+      this.fs.copy(
+        this.templatePath(components_partial),
+        this.destinationPath('app/styles/' + components_partial));
+      this.fs.copy(
+        this.templatePath(utilities_partial),
+        this.destinationPath('app/styles/' + utilities_partial));
+
+    } else {
+      css += '.css';
     }
 
-    _writingStyles() {
-      let css = 'main';
+    this.fs.copyTpl(
+      this.templatePath(css),
+      this.destinationPath('app/styles/' + css),
+      {
+        includeBootstrap: this.includeBootstrap
+      }
+    );
+
+  }
+
+  _writingScripts() {
+    this.fs.copy(
+      this.templatePath('main.js'),
+      this.destinationPath('app/scripts/main.js')
+    );
+  }
+
+  _writingHtml() {
+    let bsPath, bsPlugins;
+
+    // path prefix for Bootstrap JS files
+    if (this.includeBootstrap) {
+      bsPath = '/bower_components/bootstrap/js/dist/';
+      bsPlugins = [
+        'util',
+        'alert',
+        'button',
+        'carousel',
+        'collapse',
+        'dropdown',
+        'modal',
+        'scrollspy',
+        'tab',
+        'tooptip',
+        'popover'
+      ];
 
       if (this.includeSass) {
-        css += '.scss';
-        let header_partial = '_header.scss';
-        let footer_partial = '_footer.scss';
-        let variables_partial = '_variables.scss';
-        let components_partial = '_components.scss';
-        let utilities_partial = '_utilities.scss';
-
-        this.fs.copy(
-          this.templatePath(header_partial),
-          this.destinationPath('app/styles/' + header_partial));
-        this.fs.copy(
-          this.templatePath(footer_partial),
-          this.destinationPath('app/styles/' + footer_partial));
-        this.fs.copy(
-          this.templatePath(variables_partial),
-          this.destinationPath('app/styles/' + variables_partial));
-        this.fs.copy(
-          this.templatePath(components_partial),
-          this.destinationPath('app/styles/' + components_partial));
-        this.fs.copy(
-          this.templatePath(utilities_partial),
-          this.destinationPath('app/styles/' + utilities_partial));
-
+        bsPath += '/bower_components/bootstrap-sass/assets/javascripts/bootstrap/';
       } else {
-        css += '.css';
+        bsPath += '/bower_components/bootstrap/js/';
       }
-
-      this.fs.copyTpl(
-        this.templatePath(css),
-        this.destinationPath('app/styles/' + css),
-        {
-          includeBootstrap: this.includeBootstrap
-        }
-      );
-
     }
 
-
-    _writingScripts() {
-      this.fs.copy(
-        this.templatePath('main.js'),
-        this.destinationPath('app/scripts/main.js')
-      );
-    }
-
-    _writingHtml() {
-      let bsPath, bsPlugins;
-
-      // path prefix for Bootstrap JS files
-      if (this.includeBootstrap) {
-        bsPath = '/bower_components/bootstrap/js/dist/';
-        bsPlugins = [
-          'util',
-          'alert',
-          'button',
-          'carousel',
-          'collapse',
-          'dropdown',
-          'modal',
-          'scrollspy',
-          'tab',
-          'tooptip',
-          'popover'
-        ];
-
-        if (this.includeSass) {
-          bsPath += '/bower_components/bootstrap-sass/assets/javascripts/bootstrap/';
-        } else {
-          bsPath += '/bower_components/bootstrap/js/';
-        }
+    this.fs.copyTpl(
+      this.templatePath('index.html'),
+      this.destinationPath('app/index.html'),
+      {
+        appname: this.appname,
+        includeSass: this.includeSass,
+        includeBootstrap: this.includeBootstrap,
+        includeModernizr: this.includeModernizr,
+        includeTagManager: this.includeTagManager,
+        includeJQuery: this.includeJQuery,
+        bsPath: bsPath,
+        bsPlugins: bsPlugins
       }
+    );
+  }
 
-      this.fs.copyTpl(
-        this.templatePath('index.html'),
-        this.destinationPath('app/index.html'),
-        {
-          appname: this.appname,
-          includeSass: this.includeSass,
-          includeBootstrap: this.includeBootstrap,
-          includeModernizr: this.includeModernizr,
-          includeTagManager: this.includeTagManager,
-          includeJQuery: this.includeJQuery,
-          bsPath: bsPath,
-          bsPlugins: bsPlugins
-        }
-      );
-    }
-
-    _writingMisc() {
-      mkdirp('app/images');
-      mkdirp('app/fonts');
-      // initialize Git repo prior to installing dependencies,
-      // so it still works if the user skips dependency installation
-      this.spawnCommandSync('git', ['init']);
-    }
+  _writingMisc() {
+    mkdirp('app/images');
+    mkdirp('app/fonts');
+    // initialize Git repo prior to installing dependencies,
+    // so it still works if the user skips dependency installation
+    this.spawnCommandSync('git', ['init']);
+  }
 
   install() {
     const hasYarn = commandExists('yarn');
@@ -384,6 +383,5 @@ module.exports = class extends Generator {
         src: 'app/styles/*.scss'
       });
     }
-
   }
 }
