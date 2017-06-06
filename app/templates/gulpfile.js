@@ -10,12 +10,12 @@ const runSequence = require('run-sequence');
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
-var dev = true;
+let dev = true;
 
-var customPort = 9000;
-var customDir = '';
-var customAppDir = customDir + 'app';
-var customDistDir = customDir + 'dist';
+let customPort = 9000;
+let customDir = '';
+let customAppDir = customDir + 'app';
+let customDistDir = customDir + 'dist';
 
 if (argv.from) {
   customDir = argv.from +'/';
@@ -237,7 +237,7 @@ gulp.task('bootlint', function() {
   return gulp.src(customAppDir + '/index.html')
     .pipe($.bootlint({
       reportFn: function(file, lint, isError, isWarning, errorLocation) {
-        var message = (isError) ? 'ERROR! - ' : 'WARN! - ';
+        let message = (isError) ? 'ERROR! - ' : 'WARN! - ';
         if (errorLocation) {
           message += ' (line:' + (errorLocation.line + 1) + ', col:' + (errorLocation.column + 1) + ') [' + lint.id + '] ' + lint.message;
         } else {
@@ -261,8 +261,8 @@ gulp.task('default', () => {
 
 // new cp task
 gulp.task('cp', function() {
-  var destfrom = 'app';
-  var destto = 'dist';
+  let destfrom = 'app';
+  let destto = 'dist';
 
   if (argv.from) {
     if (argv.to) {
