@@ -1,7 +1,6 @@
-'use strict';
-var path = require('path');
-var helpers = require('yeoman-test');
-var assert = require('yeoman-assert');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
 
 describe('gulp tasks', function () {
   before(function (done) {
