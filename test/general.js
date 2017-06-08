@@ -2,8 +2,8 @@ const path = require('path');
 const helpers = require('yeoman-test');
 const assert = require('yeoman-assert');
 
-describe('general', function () {
-  before(function (done) {
+describe('general', () => {
+  before(done => {
     helpers.run(path.join(__dirname, '../app'))
       .withPrompts({features: []})
       .withGenerators([
@@ -12,12 +12,12 @@ describe('general', function () {
       .on('end', done);
   });
 
-  it('the generator can be required without throwing', function () {
+  it('the generator can be required without throwing', () => {
     // not testing the actual run of generators yet
     require('../app');
   });
 
-  it('creates expected files', function () {
+  it('creates expected files', () => {
     assert.file([
       'bower.json',
       'package.json',

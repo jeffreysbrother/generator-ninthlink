@@ -4,7 +4,7 @@ const assert = require('yeoman-assert');
 
 describe('Bootstrap feature', () => {
   describe('on', () => {
-    before(done => ) {
+    before(done => {
       helpers.run(path.join(__dirname, '../app'))
         .withPrompts({features: [
           'includeBootstrap'
