@@ -4,7 +4,7 @@ const assert = require('yeoman-assert');
 
 describe('test framework', () => {
   describe('mocha', () => {
-    before(function (done) {
+    before(done => {
       helpers.run(path.join(__dirname, '../app'))
         .withOptions({'test-framework': 'mocha'})
         .withPrompts({features: []})
