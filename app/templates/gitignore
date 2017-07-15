@@ -1,4 +1,12 @@
+# dependencies
 node_modules
-.tmp
 bower_components
 test/bower_components
+
+# compiled output
+/dist
+/tmp
+
+# system files
+.DS_Store
+Thumbs.db
