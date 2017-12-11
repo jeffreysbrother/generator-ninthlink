@@ -1,6 +1,6 @@
 {
   "name": "generator-ninthlink",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "generator-webapp + uncss, bootlint, etc.",
   "license": "BSD-2-Clause",
   "repository": "jeffreysbrother/generator-ninthlink",
@@ -32,17 +32,17 @@
     "BrowserSync",
     "minification",
     "yargs",
-		"jeffreysbrother"
+    "jeffreysbrother"
   ],
   "dependencies": {
-    "chalk": "^2.1.0",
+    "chalk": "^2.3.0",
     "command-exists": "^1.2.2",
     "generator-jasmine": "^2.0.0",
     "generator-mocha": "^2.0.0",
     "mkdirp": "^0.5.1",
     "underscore.string": "^3.3.4",
     "wiredep": "^4.0.0",
-    "yeoman-generator": "^2.0.0",
+    "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },
   "devDependencies": {
