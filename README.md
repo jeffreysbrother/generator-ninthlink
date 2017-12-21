@@ -1,4 +1,4 @@
-# Ninthlink Web app generator [![Build Status](https://secure.travis-ci.org/jeffreysbrother/generator-ninthlink.svg?branch=master)](http://travis-ci.org/jeffreysbrother/generator-ninthlink) [![Join the chat at https://gitter.im/jeffreysbrother/generator-ninthlink](https://badges.gitter.im/jeffreysbrother/generator-ninthlink.svg)](https://gitter.im/jeffreysbrother/generator-ninthlink?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# Ninthlink Web app generator [![Build Status](https://secure.travis-ci.org/jeffreysbrother/generator-ninthlink.svg?branch=master)](http://travis-ci.org/jeffreysbrother/generator-ninthlink)
 
 > [Yeoman](http://yeoman.io) generator that scaffolds out a front-end web app using [gulp](http://gulpjs.com/) for the build process. A modified version of [this generator](https://github.com/yeoman/generator-webapp).
 
