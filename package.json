@@ -1,6 +1,6 @@
 {
   "name": "generator-ninthlink",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "generator-webapp + uncss, bootlint, etc.",
   "license": "BSD-2-Clause",
   "repository": "jeffreysbrother/generator-ninthlink",
